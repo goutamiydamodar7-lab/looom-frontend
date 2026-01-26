@@ -1,62 +1,11 @@
-import {
-  HeartIcon,
-  HomeIcon,
-  MenuIcon,
-  PlusIcon,
-  SearchIcon,
-  UserIcon,
-} from "lucide-react";
-
-import LooomLogo from "./assets/looom-logo.svg";
+import { PlusIcon, Sidebar } from "lucide-react";
+import SidebarNav from "./components/sidebar-nav";
 
 function App() {
   return (
     <div className="flex min-h-screen bg-white text-black">
       {/* 1. Left Sidebar */}
-      <nav className="fixed left-0 top-0 flex h-full w-20 flex-col items-center justify-between pt-6 pb-10">
-        <a href="/" className="cursor-pointer">
-          <img src={LooomLogo} alt="logo" className="w-8 h-8 fill-black" />
-        </a>
-        <div className="flex flex-col gap-4">
-          <div className="hover:bg-gray-200 px-4 py-2.5 rounded-lg transition-all duration-150 cursor-pointer group">
-            <HomeIcon
-              className="text-gray-400 group-hover:text-black transition-colors duration-100"
-              size={24}
-            />
-          </div>
-
-          <div className="hover:bg-gray-200 px-4 py-2.5 rounded-lg transition-all duration-150 cursor-pointer group">
-            <SearchIcon
-              className="text-gray-400 group-hover:text-black transition-colors duration-100"
-              size={24}
-            />
-          </div>
-          <div className="bg-gray-200 px-4 py-2.5 rounded-lg transition-all duration-150 cursor-pointer group">
-            <PlusIcon
-              className="text-gray-800 group-hover:text-black transition-colors duration-100"
-              size={24}
-            />
-          </div>
-          <div className="hover:bg-gray-200 px-4 py-2.5 rounded-lg transition-all duration-150 cursor-pointer group">
-            <HeartIcon
-              className="text-gray-400 group-hover:text-black transition-colors duration-100"
-              size={24}
-            />
-          </div>
-          <div className="hover:bg-gray-200 px-4 py-2.5 rounded-lg transition-all duration-150 cursor-pointer group">
-            <UserIcon
-              className="text-gray-400 group-hover:text-black transition-colors duration-100"
-              size={24}
-            />
-          </div>
-        </div>
-        <div className="hover:bg-gray-200 px-4 py-2.5 rounded-lg transition-all duration-150 cursor-pointer group">
-          <MenuIcon
-            className="text-gray-400 group-hover:text-black transition-colors duration-100"
-            size={20}
-          />
-        </div>
-      </nav>
+      <SidebarNav />
 
       {/* 2. Main Feed Container */}
       <main className="flex-1 ml-20 flex justify-center">
