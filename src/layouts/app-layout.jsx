@@ -12,37 +12,55 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import useCreateThread from "@/Hooks/use-create-thread";
+import useCreateThread from "@/hooks/use-create-thread";
+import ThreadForm from "@/components/thread-form";
 
 const AppLayout = () => {
   const thread = useCreateThread();
   return (
     <div className="app">
       <main>
-        <SidebarNav onCreateClick={thread.openDialog}/>
+        <SidebarNav onCreateClick={thread.openDialog} />
         <Header />
         <div className="w-full md:max-w-4xl mx-auto bg-red-400">
           <Outlet />
         </div>
-        <BottomNav />
+        <BottomNav onCreateClick={thread.openDialog} />
         <Dialog open={thread.open} onOpenChange={thread.setOpen}>
-          <DialogContent>
-            <DialogHeader>
-              <DialogDescription>
-                This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
-              </DialogDescription>
+          <DialogContent
+            className="md:max-w-lg p-0 bg-transparent border-none shadow-none gap-0"
+            showCloseButton={false}
+          >
+            <DialogHeader className="px-5 py-4 boder-b border-black/10 bg-white rounded-t-2xl">
+              <div className="w-full flex justify-between items-center">
+                <button
+                  className="text-sm text-gray-800 hover:text-black cursor-pointer
+                "
+                  onClick={thread.closeDialog}
+                >
+                  Cancel
+                </button>
+                <DialogTitle className="text-sm font-bold">
+                  New Thread
+                </DialogTitle>
+                <DialogDescription className="sr-only"></DialogDescription>
+                <div className="w-12" />
+              </div>
             </DialogHeader>
+            <ThreadForm />
           </DialogContent>
         </Dialog>
       </main>
       <div className="hidden md:flex fixed bottom-8 right-8">
-        <div className="border border-gray-200 px-6 py-4 rounded-lg hover:shadow-sm cursor-pointer group bg-white">
+        <button
+          className="bg-white border border-gray-400 px-6 py-4 rounded-lg cursor-pointer hover:shadow-md group transition-colors duration-150"
+          onClick={thread.openDialog}
+        >
           <PlusIcon
-            className="text-gray-700 group-hover:text-black transition-colors duration-100"
+            className="text-gray-700 group-hover:text-black"
             size={24}
           />
-        </div>
+        </button>
       </div>
     </div>
   );
