@@ -12,8 +12,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import useCreateThread from "@/hooks/use-create-thread";
+
 import ThreadForm from "@/components/thread-form";
+import { useCreateThread } from "@/hooks/use-create-thread";
 
 const AppLayout = () => {
   const thread = useCreateThread();
