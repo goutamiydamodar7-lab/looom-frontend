@@ -10,7 +10,7 @@ api.interceptors.request.use((config) => {
 });
 api.interceptors.response.use(
   (res) => res,
-  (err) => {
+  (error) => {
     if (!error.response) {
       return Promise.reject({
         status: null,

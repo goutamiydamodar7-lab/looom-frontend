@@ -7,7 +7,7 @@ import Register from "./pages/register";
 import { isAuthenticated } from "./services/auth.service";
 
 const PrivateRoute = ({ children }) =>
-  !isAuthenticated() ? children : <Navigate to="/login" replace />;
+   isAuthenticated() ? children : <Navigate to="/login" replace />;
 
 const PublicRoute = ({ children }) =>
   !isAuthenticated() ? children : <Navigate to="/" replace />;
