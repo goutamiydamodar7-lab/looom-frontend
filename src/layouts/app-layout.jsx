@@ -27,7 +27,12 @@ const AppLayout = () => {
           <Outlet />
         </div>
         <BottomNav onCreateClick={thread.openDialog} />
-        <Dialog open={thread.open} onOpenChange={thread.setOpen}>
+        <Dialog
+          open={thread.open}
+          onOpenChange={(isOpen) => {
+            if (!isOpen) thread.closeDialog();
+          }}
+        >
           <DialogContent
             className="md:max-w-lg p-0 bg-transparent border-none shadow-none gap-0"
             showCloseButton={false}

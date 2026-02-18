@@ -1,51 +1,46 @@
-import api from "./api"; // axios instance
+import api from "../api/axios";
 
-// Create Post
 export const createPost = async (data) => {
-    try {
-        const res = await api.post("/posts", data);
-        return res.data;
-    } catch (err) {
-        return err.response?.data;
-    }
+  try {
+    const res = await api.post("/posts", data);
+    return res.data;
+  } catch (err) {
+    throw err.message;
+  }
 };
 
-// Get All Posts
-export const getAllPosts = async () => {
-    try {
-        const res = await api.get("/posts");
-        return res.data;
-    } catch (err) {
-        return err.response?.data;
-    }
+export const getFeed = async (params) => {
+  try {
+    const res = await api.get("/posts/feed", { params });
+    return res.data;
+  } catch (err) {
+    throw err.message;
+  }
 };
 
-// Get Single Post by ID
-export const getPostById = async (id) => {
-    try {
-        const res = await api.get(`/posts/${id}`);
-        return res.data;
-    } catch (err) {
-        return err.response?.data;
-    }
+export const getReplies = async (postId, params) => {
+  try {
+    const res = await api.get(`/posts/${postId}/replies`, { params });
+    return res.data;
+  } catch (err) {
+    throw err.message;
+  }
 };
 
-// Update Post
-export const updatePost = async (id, data) => {
-    try {
-        const res = await api.put(`/posts/${id}`, data);
-        return res.data;
-    } catch (err) {
-        return err.response?.data;
-    }
+export const getThread = async (postId, params) => {
+  try {
+    const res = await api.get(`/posts/${postId}`, { params });
+    return res.data;
+  } catch (err) {
+    throw err.message;
+  }
 };
 
-// Delete Post
-export const deletePost = async (id) => {
-    try {
-        const res = await api.delete(`/posts/${id}`);
-        return res.data;
-    } catch (err) {
-        return err.response?.data;
-    }
+export const deletePost = async (postId) => {
+  try {
+    const res = await api.delete(`/posts/${postId}`);
+    return res.data;
+  } catch (err) {
+    throw err.message;
+  }
 };
