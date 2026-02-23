@@ -1,22 +1,27 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import AppLayout from "./layouts/app-layout";
 import AuthLayout from "./layouts/auth-layout";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import { isAuthenticated } from "./services/auth.service";
+import CreateThreadModal from "./components/create-thread-model";
+
 
 const PrivateRoute = ({ children }) =>
-   isAuthenticated() ? children : <Navigate to="/login" replace />;
+  isAuthenticated() ? children : <Navigate to="/login" replace />;
 
 const PublicRoute = ({ children }) =>
   !isAuthenticated() ? children : <Navigate to="/" replace />;
 
 export default function App() {
+  const location = useLocation();
+  const state = location.state;
+
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* AUTH LAYOUT */}
+    <>
+      {/* ========= BACKGROUND ROUTES ========= */}
+      <Routes location={state?.backgroundLocation || location}>
         <Route element={<AuthLayout />}>
           <Route
             path="/login"
@@ -36,21 +41,24 @@ export default function App() {
           />
         </Route>
 
-        {/* APP LAYOUT (PUBLIC PAGES) */}
         <Route element={<AppLayout />}>
           <Route path="/" element={<Home />} />
+        </Route>
+      </Routes>
 
-          {/* ONLY PRIVATE PAGE */}
+      {/* ========= MODAL OVERLAY ========= */}
+      {state?.backgroundLocation && (
+        <Routes>
           <Route
             path="/create"
             element={
               <PrivateRoute>
-                <div /> {/* dialog trigger route */}
+                <CreateThreadModal />
               </PrivateRoute>
             }
           />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      )}
+    </>
   );
 }
