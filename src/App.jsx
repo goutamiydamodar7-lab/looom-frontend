@@ -6,7 +6,7 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import { isAuthenticated } from "./services/auth.service";
 import CreateThreadModal from "./components/create-thread-model";
-
+import Search from "./pages/search";
 
 const PrivateRoute = ({ children }) =>
   isAuthenticated() ? children : <Navigate to="/login" replace />;
@@ -43,6 +43,7 @@ export default function App() {
 
         <Route element={<AppLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
         </Route>
       </Routes>
 
