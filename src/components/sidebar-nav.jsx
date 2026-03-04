@@ -14,7 +14,10 @@ const SidebarNav = ({ onCreateClick }) => {
         <NavMenu iconSize={24} onCreateClick={onCreateClick} />
       </div>
       <div className="py-3">
-        <UserMenu size={26} className="text-gray-400 hover:text-black transition-colors"/>
+        <UserMenu
+          size={26}
+          className="text-gray-400 hover:text-black transition-colors"
+        />
       </div>
     </nav>
   );

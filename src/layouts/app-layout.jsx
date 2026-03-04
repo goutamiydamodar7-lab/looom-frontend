@@ -20,8 +20,6 @@ const AppLayout = () => {
           </div>
         </div>
         <BottomNav onCreateClick={thread.openDialog} />
-
-
       </main>
       {/* Floating Action Button (Optional) */}
       <div className="hidden md:inline-flex fixed bottom-8 right-8">
@@ -30,7 +28,7 @@ const AppLayout = () => {
           className="bg-white border border-gray-400 px-6 py-4 rounded-lg hover:shadow-md cursor-pointer group transition-all duration-150"
         >
           <PlusIcon
-            className="text-gray-700 group-hover:text-black transition-colors duration-100"
+            className="text-gray-700 group hover:text-black transition-colors duration-100"
             size={24}
           />
         </button>
