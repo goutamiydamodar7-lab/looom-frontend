@@ -1,10 +1,8 @@
-import api from "@/api/axios";
+import api from "../api/axios";
 
-export const searchQuery = async (query) => {
+export const search = async (query) => {
   try {
-    const res = await api.get("/Search", {
-      params: { q: query },
-    });
+    const res = await api.get("/search", { params: { q: query } });
     return res.data;
   } catch (err) {
     throw err.message;

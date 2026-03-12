@@ -14,8 +14,8 @@ const AppLayout = () => {
       <main>
         <SidebarNav onCreateClick={thread.openDialog} />
         <Header />
-        <div className="bg-[#fafafa]">
-          <div className="w-full max-w-180 mx-auto">
+        <div className="bg-white/70 min-h-screen">
+          <div className="w-full max-w-160 mx-auto">
             <Outlet />
           </div>
         </div>
@@ -28,7 +28,7 @@ const AppLayout = () => {
           className="bg-white border border-gray-400 px-6 py-4 rounded-lg hover:shadow-md cursor-pointer group transition-all duration-150"
         >
           <PlusIcon
-            className="text-gray-700 group hover:text-black transition-colors duration-100"
+            className="text-gray-700 group-hover:text-black transition-colors duration-100"
             size={24}
           />
         </button>
