@@ -11,7 +11,7 @@ export default function Thread() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [post, setPost] = useState(null);
+  const [posts, setPosts] = useState(null);
   const [replies, setReplies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [repliesLoading, setRepliesLoading] = useState(false);
@@ -29,7 +29,7 @@ export default function Thread() {
     setError("");
     try {
       const data = await getThread(id, { limit: LIMIT, offset: 0 });
-      setPost(data.post);
+      setPosts(data.post);
       setReplies(data.replies);
       offsetRef.current = data.replies.length;
       hasMoreRef.current = data.replies.length === LIMIT;
@@ -149,7 +149,7 @@ export default function Thread() {
       </div>
 
       <div className="w-full md:bg-white md:border md:border-black/10 md:rounded-3xl md:shadow-xs">
-        <PostCard post={post} viewPost />
+        <PostCard post={posts} viewPost onDelete={() => navigate(-1)} />
 
         <div className="mx-5 border-t border-black/10" />
 
@@ -163,7 +163,13 @@ export default function Thread() {
             <div className="animate-[fadeIn_0.3s_ease]">
               {replies.map((reply, index) => (
                 <div key={reply.post_id}>
-                  <PostCard post={reply} isReply />
+                  <PostCard
+                    post={reply}
+                    isReply
+                    onDelete={(id) =>
+                      setReplies((prev) => prev.filter((p) => p.post_id !== id))
+                    }
+                  />
                   {index < replies.length - 1 && (
                     <div className="mx-5 border-t border-black/10" />
                   )}

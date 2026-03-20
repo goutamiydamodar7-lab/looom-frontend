@@ -127,7 +127,13 @@ export default function Home() {
         {posts.length > 0 && (
           <div className="animate-[fadeIn_0.3s_ease]">
             {posts.map((post) => (
-              <PostCard key={post.post_id} post={post} />
+              <PostCard
+                key={post.post_id}
+                post={post}
+                onDelete={(id) =>
+                  setPosts((prev) => prev.filter((p) => p.post_id !== id))
+                }
+              />
             ))}
           </div>
         )}
