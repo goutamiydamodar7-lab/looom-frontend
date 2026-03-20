@@ -91,7 +91,7 @@ export default function PostCard({
         {isOwner && (
           <button
             onClick={handleDelete}
-            className="flex items-center gap-2 w-full px-3 py-2 text-sm text-gray-500 hover:bg-red-50 rounded-md transition-colors cursor-pointer"
+            className="flex items-center gap-2 w-full px-3 py-2 text-sm text-red-500 hover:bg-red-50 rounded-md transition-colors cursor-pointer"
           >
             <Trash2 size={15} />
             Delete Post
