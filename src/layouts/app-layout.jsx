@@ -3,7 +3,6 @@ import { PlusIcon } from "lucide-react";
 import BottomNav from "@/components/bottom-nav";
 import Header from "@/components/header";
 import SidebarNav from "@/components/sidebar-nav";
-
 import { useCreateThread } from "@/hooks/use-create-thread";
 
 const AppLayout = () => {
