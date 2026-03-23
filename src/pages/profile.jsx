@@ -1,6 +1,6 @@
 import { getUserPosts, getUserProfile } from "@/services/profile.service";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PostCard from "@/components/post-card";
 import { getUser } from "@/services/auth.service";
