@@ -11,7 +11,9 @@ import { Link } from "react-router-dom";
 const UserMenu = ({ size = 24, className = "", align = "start" }) => {
   const handleLogout = () => {
     logoutUser();
+    window.location.href = "/";
   };
+
   return (
     <Popover>
       <PopoverTrigger asChild>
